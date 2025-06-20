@@ -40,6 +40,20 @@ npm install
 cp sample.ev .env
 ```
 
+Create the file `.env.test` and add the env vars
+
+```bash
+DATABASE_URL="postgresql://postgres:postgres@localhost:5433/test_db"
+IS_TEST=true
+```
+
+Create the file `.env.playwright` and add the env var
+
+```bash
+DATABASE_URL="postgresql://postgres:postgres@localhost:5434/playwright"
+IS_TEST=true
+```
+
 ### 4. Start PostgreSQL (and pgAdmin) with Docker
 
 ```bash
@@ -86,3 +100,35 @@ npm run test:server
 ```bash
 npm run test:ui
 ```
+
+## 🧭 Run End-to-End Tests (Playwright)
+
+### 1. Run the development server SPECIFIC FOR E2E TESTS (it runs over playwright database)
+
+```bash
+  npm run dev:e2e
+```
+
+### 2. Run the Playwright tests
+
+```bash
+  npm run test:e2e
+```
+
+## 🛠 Tips
+
+Access pgAdmin at http://localhost:5050
+
+Email: admin@admin.com
+
+Password: admin
+
+Hostnames (Connections tab):
+
+postgres_dev → port 5432 → username postgres → password postgres → maintenance database dev_db
+
+postgres_test → port 5432 → username postgres → password postgres → maintenance database test_db
+
+postgres_playwright → port 5432 → username postgres → password postgres → maintenance database playwright
+
+If prisma db push fails, ensure Docker is running and .env is properly set.
