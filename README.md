@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧪 Fullstack App with Next.js, PostgreSQL, Prisma, Vitest and Playwright
 
-## Getting Started
+This project is a fullstack web application built with:
 
-First, run the development server:
+- ✅ **Next.js** (App Router)
+- 💾 **PostgreSQL** via Docker
+- 🔍 **Prisma** for database access
+- 📬 **React Hook Form** and **Zod** for validation
+- 🧪 **Vitest** for unit tests
+- 🎭 **Playwright** for end-to-end testing
+
+---
+
+## 📦 Prerequisites
+
+- [Node.js](https://nodejs.org/) (v22 or later)
+- [Docker & Docker Compose](https://docs.docker.com/compose/install/)
+- [npm](https://www.npmjs.com/)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone git@github.com:alexfqc/next-auth-tasks.git
+cd next-auth-tasks
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Copy the environment file and configure it
+
+```bash
+cp sample.ev .env
+```
+
+### 4. Start PostgreSQL (and pgAdmin) with Docker
+
+```bash
+docker compose up -d
+```
+
+This will spin up:
+
+- postgres_dev (port 5432)
+- postgres_test (port 5433)
+- postgres_playwright (port 5434)
+- pgadmin (port 5050)
+
+### 5. Push the Prisma schema to the database
+
+```bash
+npx prisma db push
+```
+
+Generate the Prisma Client:
+
+```bash
+npx prisma generate
+```
+
+## 🧑‍💻 Run the Application
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000 to access the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Run Unit Tests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ✅ Server-side tests
 
-## Learn More
+```bash
+npm run test:server
+```
 
-To learn more about Next.js, take a look at the following resources:
+### ✅ UI tests
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run test:ui
+```
