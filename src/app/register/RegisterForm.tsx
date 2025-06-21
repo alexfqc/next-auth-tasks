@@ -71,7 +71,6 @@ export default function RegisterForm() {
   return (
     <form
       action={formAction}
-      method="POST"
       className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md space-y-4"
     >
       <div className="flex items-center justify-center mb-6">

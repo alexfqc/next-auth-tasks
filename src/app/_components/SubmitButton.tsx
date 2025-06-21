@@ -21,6 +21,7 @@ export default function SubmitButton({
           ? "bg-orange-300 cursor-not-allowed"
           : "bg-orange-500 hover:bg-orange-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
       }`}
+      data-testid="submit-button"
       {...rest}
     >
       {loading ? (

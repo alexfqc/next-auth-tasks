@@ -19,6 +19,7 @@ export default function FormInput({
       </label>
       <input
         id={id}
+        data-testid={id}
         type={type}
         className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
         {...rest}
