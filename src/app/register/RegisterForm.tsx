@@ -9,6 +9,7 @@ import {
   registerSchema,
 } from "../../../lib/schemas/registerSchema";
 import { UserPlus } from "lucide-react";
+import FormInput from "../_components/FormInput";
 
 type RegisterState = {
   error?: string;
@@ -79,53 +80,20 @@ export default function RegisterForm() {
           Register
         </h1>
       </div>
-      <div>
-        <label htmlFor="name" className="block mb-1 text-gray-700 font-medium">
-          Name
-        </label>
-        <input
-          id="name"
-          {...register("name")}
-          type="text"
-          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="email" className="block mb-1 text-gray-700">
-          Email
-        </label>
-        <input
-          id="email"
-          {...register("email")}
-          type="email"
-          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="password" className="block mb-1 text-gray-700">
-          Password
-        </label>
-        <input
-          id="password"
-          {...register("password")}
-          type="password"
-          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="confirmPassword" className="block mb-1 text-gray-700">
-          Confirm Password
-        </label>
-        <input
-          id="confirmPassword"
-          {...register("confirmPassword")}
-          type="password"
-          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
-        />
-      </div>
+      <FormInput id="name" {...register("name")} label="Name" />
+      <FormInput id="email" {...register("email")} label="Email" />
+      <FormInput
+        id="password"
+        {...register("password")}
+        label="Password"
+        type="password"
+      />
+      <FormInput
+        id="confirmPassword"
+        {...register("confirmPassword")}
+        label="Confirm Password"
+        type="password"
+      />
 
       {state?.error ? (
         <p className="text-red-600 text-sm">{state.error}</p>

@@ -1,8 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import RegisterForm from "./registerFom";
-import { registerSchema } from "../../../lib/schemas/registerSchema";
+import RegisterForm from "./RegisterForm";
 import { describe, it, expect } from "vitest";
 
 describe("RegisterForm", () => {
