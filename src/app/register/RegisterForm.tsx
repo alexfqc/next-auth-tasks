@@ -77,19 +77,21 @@ export default function RegisterForm() {
         <UserPlus className="w-10 h-10 text-orange-500" />
         <h1 className="text-3xl font-extrabold text-orange-500">Register</h1>
       </div>
-      <FormInput id="name" {...register("name")} label="Name" />
-      <FormInput id="email" {...register("email")} label="Email" />
+      <FormInput id="name" {...register("name")} label="Name" required />
+      <FormInput id="email" {...register("email")} label="Email" required />
       <FormInput
         id="password"
         {...register("password")}
         label="Password"
         type="password"
+        required
       />
       <FormInput
-        id="confirmPassword"
+        id="confirm-password"
         {...register("confirmPassword")}
         label="Confirm Password"
         type="password"
+        required
       />
 
       {state?.error ? (

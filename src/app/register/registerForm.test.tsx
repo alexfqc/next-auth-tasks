@@ -8,10 +8,10 @@ describe("RegisterForm", () => {
   it("should render all inputs fields and submit button", () => {
     render(<RegisterForm />);
 
-    expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/^password$/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/confirm password/i)).toBeInTheDocument();
+    expect(screen.getByTestId("name")).toBeInTheDocument();
+    expect(screen.getByTestId("email")).toBeInTheDocument();
+    expect(screen.getByTestId("password")).toBeInTheDocument();
+    expect(screen.getByTestId("confirm-password")).toBeInTheDocument();
 
     expect(
       screen.getByRole("button", { name: /register/i })
@@ -29,7 +29,7 @@ describe("RegisterForm", () => {
   it("should disable submit button when form is invalid", async () => {
     render(<RegisterForm />);
 
-    const nameInput = screen.getByLabelText(/name/i);
+    const nameInput = screen.getByTestId("name");
     const button = screen.getByRole("button", { name: /register/i });
 
     await userEvent.type(nameInput, "Enzo Jonh");
@@ -40,8 +40,8 @@ describe("RegisterForm", () => {
   it("should disable submit button when form is invalid", async () => {
     render(<RegisterForm />);
 
-    const nameInput = screen.getByLabelText(/name/i);
-    const emailInput = screen.getByLabelText(/email/i);
+    const nameInput = screen.getByTestId("name");
+    const emailInput = screen.getByTestId("email");
     const button = screen.getByRole("button", { name: /register/i });
 
     await userEvent.type(nameInput, "Enzo Jonh");
@@ -53,9 +53,9 @@ describe("RegisterForm", () => {
   it("should disable submit button when form is invalid", async () => {
     render(<RegisterForm />);
 
-    const nameInput = screen.getByLabelText(/name/i);
-    const emailInput = screen.getByLabelText(/email/i);
-    const passwordInput = screen.getByLabelText(/^password$/i);
+    const nameInput = screen.getByTestId("name");
+    const emailInput = screen.getByTestId("email");
+    const passwordInput = screen.getByTestId("password");
     const button = screen.getByRole("button", { name: /register/i });
 
     await userEvent.type(nameInput, "Enzo Jonh");
@@ -68,10 +68,10 @@ describe("RegisterForm", () => {
   it("should allow user toi type in input fields", async () => {
     render(<RegisterForm />);
 
-    const nameInput = screen.getByLabelText(/name/i);
-    const emailInput = screen.getByLabelText(/email/i);
-    const passwordInput = screen.getByLabelText(/^password$/i);
-    const confirmPasswordInput = screen.getByLabelText(/confirm password/i);
+    const nameInput = screen.getByTestId("name");
+    const emailInput = screen.getByTestId("email");
+    const passwordInput = screen.getByTestId("password");
+    const confirmPasswordInput = screen.getByTestId("confirm-password");
 
     await userEvent.type(nameInput, "Enzo Jonh");
     await userEvent.type(emailInput, "enzo@jonh.com");
@@ -87,10 +87,10 @@ describe("RegisterForm", () => {
   it("should enable submit button when form is valid", async () => {
     render(<RegisterForm />);
 
-    const nameInput = screen.getByLabelText(/name/i);
-    const emailInput = screen.getByLabelText(/email/i);
-    const passwordInput = screen.getByLabelText(/^password$/i);
-    const confirmPasswordInput = screen.getByLabelText(/confirm password/i);
+    const nameInput = screen.getByTestId("name");
+    const emailInput = screen.getByTestId("email");
+    const passwordInput = screen.getByTestId("password");
+    const confirmPasswordInput = screen.getByTestId("confirm-password");
     const button = screen.getByRole("button", { name: /register/i });
 
     await userEvent.type(nameInput, "Enzo Jonh");
