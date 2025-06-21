@@ -13,7 +13,8 @@
     "test:server": "npm run test:reset && dotenv -e .env.test -- vitest run --config vitest.config.server.ts",
     "test:ui": "dotenv -e .env.test -- vitest run --config vitest.config.ui.ts",
     "test:e2e": "npm run test:e2e:reset && npx playwright test",
-    "dev:e2e": "dotenv -e .env.playwright -- next dev"
+    "dev:e2e": "dotenv -e .env.playwright -- next dev",
+    "test": "npm run test:server && npm run test:ui"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -21,6 +22,7 @@
     "@prisma/client": "^6.9.0",
     "bcrypt": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.519.0",
     "next": "15.3.3",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",

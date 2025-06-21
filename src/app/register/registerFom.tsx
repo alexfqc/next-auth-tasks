@@ -8,6 +8,7 @@ import {
   type RegisterInput,
   registerSchema,
 } from "../../../lib/schemas/registerSchema";
+import { UserPlus } from "lucide-react";
 
 type RegisterState = {
   error?: string;
@@ -69,18 +70,24 @@ export default function RegisterForm() {
     <form
       action={formAction}
       method="POST"
-      className="flex flex-col gap-4 max-w-md mx-auto p-4"
+      className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md space-y-4"
       onSubmit={() => console.log("Form submitted")}
     >
+      <div className="flex items-center justify-center mb-6">
+        <UserPlus className="w-10 h-10 text-orange-500" />
+        <h1 className="text-3xl font-bold text-orange-500 text-center ml-4">
+          Register
+        </h1>
+      </div>
       <div>
-        <label htmlFor="name" className="block mb-1 text-gray-700">
+        <label htmlFor="name" className="block mb-1 text-gray-700 font-medium">
           Name
         </label>
         <input
           id="name"
           {...register("name")}
           type="text"
-          className="w-full p-2 border-2 border-gray-500 rounded text-gray-900"
+          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
         />
       </div>
 
@@ -92,7 +99,7 @@ export default function RegisterForm() {
           id="email"
           {...register("email")}
           type="email"
-          className="w-full p-2 border-2 border-gray-500 rounded text-gray-900"
+          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
         />
       </div>
 
@@ -104,7 +111,7 @@ export default function RegisterForm() {
           id="password"
           {...register("password")}
           type="password"
-          className="w-full p-2 border-2 border-gray-500 rounded text-gray-900"
+          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
         />
       </div>
 
@@ -116,22 +123,22 @@ export default function RegisterForm() {
           id="confirmPassword"
           {...register("confirmPassword")}
           type="password"
-          className="w-full p-2 border-2 border-gray-500 rounded text-gray-900"
+          className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500 transition-colors duration-200"
         />
       </div>
 
-      {state?.error && <p className="text-red-600 text-sm">{state.error}</p>}
+      {state?.error ? (
+        <p className="text-red-600 text-sm">{state.error}</p>
+      ) : null}
 
       <button
         type="submit"
         disabled={isButtonDisabled}
-        className={`bg-blue-600 text-white px-4 py-2 rounded transition
-          ${
-            isButtonDisabled
-              ? "opacity-50 cursor-not-allowed"
-              : "hover:bg-blue-700"
-          }
-  `}
+        className={`w-full py-3 font-semibold rounded-lg transition-colors text-white ${
+          isButtonDisabled
+            ? "bg-orange-300 cursor-not-allowed"
+            : "bg-orange-500 hover:bg-orange-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
+        }`}
       >
         {isPending ? (
           <span
