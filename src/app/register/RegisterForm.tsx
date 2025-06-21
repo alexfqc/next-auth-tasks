@@ -71,13 +71,11 @@ export default function RegisterForm() {
   return (
     <form
       action={formAction}
-      className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md space-y-4"
+      className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md space-y-6"
     >
-      <div className="flex items-center justify-center mb-6">
+      <div className="flex items-center justify-center gap-2">
         <UserPlus className="w-10 h-10 text-orange-500" />
-        <h1 className="text-3xl font-bold text-orange-500 text-center ml-4">
-          Register
-        </h1>
+        <h1 className="text-3xl font-extrabold text-orange-500">Register</h1>
       </div>
       <FormInput id="name" {...register("name")} label="Name" />
       <FormInput id="email" {...register("email")} label="Email" />
