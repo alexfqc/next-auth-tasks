@@ -10,6 +10,7 @@ import {
 } from "../../../lib/schemas/registerSchema";
 import { UserPlus } from "lucide-react";
 import FormInput from "../_components/FormInput";
+import SubmitButton from "../_components/SubmitButton";
 
 type RegisterState = {
   error?: string;
@@ -72,7 +73,6 @@ export default function RegisterForm() {
       action={formAction}
       method="POST"
       className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md space-y-4"
-      onSubmit={() => console.log("Form submitted")}
     >
       <div className="flex items-center justify-center mb-6">
         <UserPlus className="w-10 h-10 text-orange-500" />
@@ -99,24 +99,11 @@ export default function RegisterForm() {
         <p className="text-red-600 text-sm">{state.error}</p>
       ) : null}
 
-      <button
-        type="submit"
+      <SubmitButton
+        text="Register"
+        loading={isPending}
         disabled={isButtonDisabled}
-        className={`w-full py-3 font-semibold rounded-lg transition-colors text-white ${
-          isButtonDisabled
-            ? "bg-orange-300 cursor-not-allowed"
-            : "bg-orange-500 hover:bg-orange-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50"
-        }`}
-      >
-        {isPending ? (
-          <span
-            data-testid="spinner"
-            className="ml-2 spinner-border animate-spin inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full"
-          ></span>
-        ) : (
-          "Register"
-        )}
-      </button>
+      />
     </form>
   );
 }
