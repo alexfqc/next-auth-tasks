@@ -51,7 +51,7 @@ jobs:
         run: |
           nohup npm run dev:e2e &
           echo "Waiting for app to start..."
-          for i in {1..30}; do
+          for i in {1..60}; do
             if curl -s http://localhost:3000 > /dev/null; then
               echo "App is up!";
               break;
@@ -76,4 +76,4 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: npm run run:e2e

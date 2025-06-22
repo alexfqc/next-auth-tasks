@@ -106,7 +106,7 @@ npm run test:ui
 ### 1. Run the development server SPECIFIC FOR E2E TESTS (it runs over playwright database)
 
 ```bash
-  npm run dev:e2e
+  npm run run:e2e
 ```
 
 ### 2. Run the Playwright tests
