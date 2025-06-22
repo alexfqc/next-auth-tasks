@@ -27,7 +27,6 @@ const eslintConfig = [
       "testing-library/prefer-user-event": "warn",
       "testing-library/no-manual-cleanup": "error",
       "testing-library/await-async-queries": "error",
-      "testing-library/no-await-sync-query": "error",
       "testing-library/prefer-find-by": "warn",
       "testing-library/no-wait-for-side-effects": "error",
       "testing-library/consistent-data-testid": [

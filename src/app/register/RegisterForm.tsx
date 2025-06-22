@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useActionState } from "react";
 import { registerUser } from "../actions/register";
@@ -12,16 +13,25 @@ import { UserPlus } from "lucide-react";
 import FormInput from "../_components/FormInput";
 import SubmitButton from "../_components/SubmitButton";
 
-type RegisterState = {
-  error?: string;
-  success?: boolean;
-};
+type RegisterState =
+  | {
+      status: "success";
+      redirectTo: string;
+    }
+  | {
+      status: "error";
+      message: string;
+    }
+  | {
+      status: "idle";
+    };
 
 export default function RegisterForm() {
+  const router = useRouter();
   const [state, formAction, isPending] = useActionState<
     RegisterState,
     FormData
-  >(registerUser, {});
+  >(registerUser, { status: "idle" });
 
   const { register, watch, setValue } = useForm<RegisterInput>({
     defaultValues: {
@@ -46,9 +56,10 @@ export default function RegisterForm() {
   }, [watch]);
 
   useEffect(() => {
-    if (state?.success) {
+    if (state?.status === "success") {
+      router.push(state.redirectTo);
       localStorage.removeItem("register-form");
-    } else if (state?.error) {
+    } else if (state?.status === "error") {
       const saved = localStorage.getItem("register-form");
       if (saved) {
         const values = JSON.parse(saved) as Partial<RegisterInput>;
@@ -58,7 +69,7 @@ export default function RegisterForm() {
         setValue("confirmPassword", values?.confirmPassword || "");
       }
     }
-  }, [state, setValue]);
+  }, [state, setValue, router]);
 
   const isButtonDisabled =
     registerSchema.safeParse({
@@ -94,8 +105,8 @@ export default function RegisterForm() {
         required
       />
 
-      {state?.error ? (
-        <p className="text-red-600 text-sm">{state.error}</p>
+      {state?.status === "error" ? (
+        <p className="text-red-600 text-sm">{state.message}</p>
       ) : null}
 
       <SubmitButton
