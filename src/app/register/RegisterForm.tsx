@@ -56,10 +56,10 @@ export default function RegisterForm() {
   }, [watch]);
 
   useEffect(() => {
-    if (state?.status === "success") {
+    if (state.status === "success") {
       router.push(state.redirectTo);
       localStorage.removeItem("register-form");
-    } else if (state?.status === "error") {
+    } else if (state.status === "error") {
       const saved = localStorage.getItem("register-form");
       if (saved) {
         const values = JSON.parse(saved) as Partial<RegisterInput>;
@@ -105,8 +105,10 @@ export default function RegisterForm() {
         required
       />
 
-      {state?.status === "error" ? (
-        <p className="text-red-600 text-sm">{state.message}</p>
+      {state.status === "error" ? (
+        <p data-testid="error-message" className="text-red-600 text-sm">
+          {state.message}
+        </p>
       ) : null}
 
       <SubmitButton
