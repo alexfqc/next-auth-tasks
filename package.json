@@ -13,6 +13,7 @@
     "test:server": "npm run test:reset && dotenv -e .env.test -- vitest run --config vitest.config.server.ts",
     "test:ui": "dotenv -e .env.test -- vitest run --config vitest.config.ui.ts",
     "test:e2e": "npm run test:e2e:reset && npx playwright test",
+    "start:e2e": "dotenv -e .env.playwright -- next start",
     "run:e2e": "next build && dotenv -e .env.playwright -- next start",
     "test": "npm run test:server && npm run test:ui"
   },

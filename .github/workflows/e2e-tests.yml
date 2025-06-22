@@ -43,13 +43,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build Next.js app
+        run: npm run build
+
       - name: Create .env.playwright file
         run: |
           echo "${{ secrets.ENV_PLAYWRIGHT }}" > .env.playwright
 
       - name: Start Next.js app in background
         run: |
-          nohup npm run dev:e2e &
+          nohup npm run start:e2e &
           echo "Waiting for app to start..."
           for i in {1..60}; do
             if curl -s http://localhost:3000 > /dev/null; then
